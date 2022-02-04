@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.indrih.transitionandcompose.R
 import com.indrih.transitionandcompose.databinding.FragmentListBinding
+import com.indrih.transitionandcompose.details.ArticleDetails
+import com.indrih.transitionandcompose.details.DetailsFragment
 import com.indrih.transitionandcompose.list.adapter.ArticlesAdapter
 import com.indrih.transitionandcompose.list.adapter.Item
 
@@ -38,7 +41,12 @@ class ListFragment : Fragment() {
     }
 
     private fun onArticleClick(item: Item.Article) {
-        findNavController().navigate(ListFragmentDirections.toDetailsFragment(title = item.title, image = item.image))
+        val articleDetails = ArticleDetails(image = item.image, title = item.title)
+        parentFragmentManager.commit {
+            replace(R.id.activityRootNavigationHost, DetailsFragment.create(articleDetails))
+            setReorderingAllowed(true)
+            addToBackStack("null")
+        }
     }
 
     override fun onDestroyView() {

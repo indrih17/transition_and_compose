@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3105" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.54375" />
         <entry key="app/src/main/res/layout/fragment_details.xml" value="0.5434782608695652" />
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.32538330494037476" />

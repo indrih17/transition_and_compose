@@ -3,11 +3,10 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("com.android.application")
     kotlin(module = "android")
-    id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 android {
-
     compileSdk = 31
 
     defaultConfig {
@@ -31,30 +30,27 @@ android {
         viewBinding = true
         compose = true
     }
+
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.1.0-rc02"
+        kotlinCompilerExtensionVersion = "1.1.0-rc03"
     }
 }
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("androidx.core:core-ktx:1.7.0")
+
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
 
-    implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.4.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.4.0")
-    implementation("androidx.navigation:navigation-runtime-ktx:2.4.0")
 
-    implementation("androidx.compose.ui:ui:1.1.0-rc01")
-    implementation("androidx.compose.ui:ui-tooling:1.1.0-rc01")
-    implementation("androidx.compose.runtime:runtime:1.1.0-rc01")
-    implementation("androidx.compose.material:material:1.1.0-rc01")
+    val composeVersion = "1.1.0-rc03"
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.runtime:runtime:$composeVersion")
+    implementation("androidx.compose.material:material:$composeVersion")
 
     implementation("io.coil-kt:coil:1.4.0")
     implementation("io.coil-kt:coil-compose:1.4.0")
