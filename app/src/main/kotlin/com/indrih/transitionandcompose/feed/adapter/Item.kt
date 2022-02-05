@@ -1,4 +1,4 @@
-package com.indrih.transitionandcompose.list.adapter
+package com.indrih.transitionandcompose.feed.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 

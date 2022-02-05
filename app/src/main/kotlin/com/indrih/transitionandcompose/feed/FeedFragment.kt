@@ -1,4 +1,4 @@
-package com.indrih.transitionandcompose.list
+package com.indrih.transitionandcompose.feed
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,43 +8,43 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.indrih.transitionandcompose.R
-import com.indrih.transitionandcompose.databinding.FragmentListBinding
+import com.indrih.transitionandcompose.databinding.FragmentFeedBinding
 import com.indrih.transitionandcompose.details.DetailsFragment
-import com.indrih.transitionandcompose.list.adapter.ArticlesAdapter
-import com.indrih.transitionandcompose.list.adapter.Item
+import com.indrih.transitionandcompose.feed.adapter.FeedAdapter
+import com.indrih.transitionandcompose.feed.adapter.Item
 
-class ListFragment : Fragment() {
-    private val articlesAdapter by lazy(LazyThreadSafetyMode.NONE) {
-        ArticlesAdapter(onArticleClick = ::onArticleClick)
+class FeedFragment : Fragment() {
+    private val feedAdapter by lazy(LazyThreadSafetyMode.NONE) {
+        FeedAdapter(onArticleClick = ::onArticleClick)
     }
 
-    private var binding: FragmentListBinding? = null
+    private var binding: FragmentFeedBinding? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        postponeEnterTransition()
-        return FragmentListBinding.inflate(inflater, container, false).also { binding = it }.root
+        postponeEnterTransition() // <-- comment this to fix
+        return FragmentFeedBinding.inflate(inflater, container, false).also { binding = it }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = binding ?: throw IllegalStateException()
         with(binding.recyclerView) {
-            adapter = articlesAdapter
+            adapter = feedAdapter
             layoutManager = LinearLayoutManager(context)
         }
 
         val articles = content.mapIndexed { index, (title, image) -> Item.Article(id = index, title = title, image = image) }
-        articlesAdapter.submitList(listOf(Item.Ad) + articles) {
-            startPostponedEnterTransition()
+        feedAdapter.submitList(listOf(Item.Ad) + articles) {
+            startPostponedEnterTransition() // <-- comment this to fix
         }
     }
 
-    private fun onArticleClick(item: Item.Article) {
-        val articleDetails = DetailsFragment.Article(image = item.image, title = item.title)
+    private fun onArticleClick(article: Item.Article) {
+        val articleDetails = DetailsFragment.Article(image = article.image, title = article.title)
         parentFragmentManager.commit {
-            replace(R.id.activityRootNavigationHost, DetailsFragment.create(articleDetails))
+            replace(R.id.activityFragmentContainerView, DetailsFragment.create(articleDetails))
             setReorderingAllowed(true)
-            addToBackStack("null")
+            addToBackStack(null)
         }
     }
 

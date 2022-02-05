@@ -1,4 +1,4 @@
-package com.indrih.transitionandcompose.list.adapter
+package com.indrih.transitionandcompose.feed.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.recyclerview.widget.ListAdapter
 import com.indrih.transitionandcompose.databinding.ItemAdBinding
 
-class ArticlesAdapter(
+class FeedAdapter(
     private val onArticleClick: (Item.Article) -> Unit
 ) : ListAdapter<Item, ViewHolder>(Item) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

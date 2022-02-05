@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 
 @Composable
-@Suppress("UndocumentedPublicFunction")
 fun ArticleCard(title: String, image: String, onArticleClick: () -> Unit) {
     ClickableCard(
         modifier = Modifier.padding(vertical = 6.dp, horizontal = 12.dp),
@@ -51,7 +50,6 @@ fun ArticleCard(title: String, image: String, onArticleClick: () -> Unit) {
     }
 }
 
-/** Стандартная карточка. */
 @Composable
 fun ClickableCard(
     modifier: Modifier = Modifier,
@@ -71,7 +69,6 @@ fun ClickableCard(
     )
 }
 
-/** Добавляет анимацию скалирования при клике. */
 fun Modifier.scaleAnimationOnPress(
     onClick: () -> Unit
 ): Modifier {

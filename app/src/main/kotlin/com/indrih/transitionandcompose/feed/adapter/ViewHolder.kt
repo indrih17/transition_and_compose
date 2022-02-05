@@ -1,4 +1,4 @@
-package com.indrih.transitionandcompose.list.adapter
+package com.indrih.transitionandcompose.feed.adapter
 
 import android.view.View
 import androidx.compose.ui.platform.ComposeView
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.indrih.transitionandcompose.ArticleCard
 import com.indrih.transitionandcompose.databinding.ItemAdBinding
 
-sealed class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+sealed class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     class Ad(binding: ItemAdBinding) : ViewHolder(binding.root)
 
     class Article(
@@ -20,12 +20,12 @@ sealed class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             )
         }
 
-        fun render(item: Item.Article) {
+        fun render(article: Item.Article) {
             composeView.setContent {
                 ArticleCard(
-                    title = item.title,
-                    image = item.image,
-                    onArticleClick = { onArticleClick(item) }
+                    title = article.title,
+                    image = article.image,
+                    onArticleClick = { onArticleClick(article) }
                 )
             }
         }

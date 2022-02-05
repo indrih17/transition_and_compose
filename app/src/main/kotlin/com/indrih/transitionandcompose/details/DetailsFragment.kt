@@ -18,7 +18,7 @@ class DetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        postponeEnterTransition()
+        postponeEnterTransition() // <-- comment this to fix
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
@@ -26,19 +26,19 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = binding ?: throw IllegalStateException()
+        val binding = binding ?: throw IllegalStateException("binding == null")
         val article = getArticle()
         binding.titleTextView.text = article.title
         binding.articleImageView.load(article.image) {
             listener(object : ImageRequest.Listener {
                 override fun onSuccess(request: ImageRequest, metadata: ImageResult.Metadata) {
                     super.onSuccess(request, metadata)
-                    startPostponedEnterTransition()
+                    startPostponedEnterTransition() // <-- comment this to fix
                 }
 
                 override fun onError(request: ImageRequest, throwable: Throwable) {
                     super.onError(request, throwable)
-                    startPostponedEnterTransition()
+                    startPostponedEnterTransition() // <-- comment this to fix
                 }
             })
         }
