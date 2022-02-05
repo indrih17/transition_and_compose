@@ -9,7 +9,6 @@ import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.indrih.transitionandcompose.R
 import com.indrih.transitionandcompose.databinding.FragmentListBinding
-import com.indrih.transitionandcompose.details.ArticleDetails
 import com.indrih.transitionandcompose.details.DetailsFragment
 import com.indrih.transitionandcompose.list.adapter.ArticlesAdapter
 import com.indrih.transitionandcompose.list.adapter.Item
@@ -41,7 +40,7 @@ class ListFragment : Fragment() {
     }
 
     private fun onArticleClick(item: Item.Article) {
-        val articleDetails = ArticleDetails(image = item.image, title = item.title)
+        val articleDetails = DetailsFragment.Article(image = item.image, title = item.title)
         parentFragmentManager.commit {
             replace(R.id.activityRootNavigationHost, DetailsFragment.create(articleDetails))
             setReorderingAllowed(true)
@@ -55,8 +54,8 @@ class ListFragment : Fragment() {
     }
 
     private val content = listOf(
-        "Чунь Юнь" to "https://playsector.ru/images/img/2021/03/18/playsectorru_20210318233520.jpg",
-        "Шень Хэ" to "https://vgtimes.ru/uploads/posts/2022-01/thumbs/1641883205_art3.jpg",
-        "Тётя и племяшка" to "https://wol.su/uploads/posts/2022-01/1641420246_1-shenhe-and-chongyun-from-genshin-impact.jpg"
+        "Chongyun" to "https://playsector.ru/images/img/2021/03/18/playsectorru_20210318233520.jpg",
+        "Shenhe" to "https://vgtimes.ru/uploads/posts/2022-01/thumbs/1641883205_art3.jpg",
+        "Aunt and nephew" to "https://wol.su/uploads/posts/2022-01/1641420246_1-shenhe-and-chongyun-from-genshin-impact.jpg"
     )
 }
