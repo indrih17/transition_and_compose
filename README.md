@@ -1,5 +1,6 @@
 # transition_and_compose
 I reproduce this bug on Nexus 5 API 24
+
 Steps to Reproduce:
 1. Scroll to the last card
 2. Open any card
